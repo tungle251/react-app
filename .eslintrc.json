@@ -1,0 +1,30 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": ["react-app", "prettier"],
+    "plugins": ["react", "prettier"],
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+              "printWidth": 80,
+              "trailingComma": "es5",
+              "semi": false,
+              "singleQuote": true,
+              "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
+              "endOfLine": "auto"
+            }
+        ],
+        "semi": "off",
+        "no-unused-vars": "error",
+        "no-mixed-operators": "error"
+    }
+}
