@@ -2,28 +2,32 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow: hidden;
+  margin-left: 15px;
 
   &-container {
     display: flex;
 
     .slider-item {
-      width: 300px;
+      // fixed width
+      flex-basis: 300px;
+      flex-grow: 0;
+      flex-shrink: 0;
       height: 500px;
       border: 1px solid black;
-      border-radius: 10px;
-      margin-right: 10px;
-      transition-property: transform,opacity,-webkit-transform;
+      border-radius: 15px;
+      transition-property: transform, opacity, -webkit-transform;
       transition-duration: 1s;
     }
 
     .is-active {
-        background-color: green;
-        opacity: 1;
+      background-color: green;
+      opacity: 1;
     }
 
     .is-hidden {
-        background-color: grey;
-        opacity: 0;
+      background-color: green;
+      opacity: 0;
     }
   }
 
