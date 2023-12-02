@@ -23,23 +23,22 @@ const Slider = () => {
     <div className="slider">
       <div className="slider-container">
         {ITEMS.map((item, i) => {
-          const isActive = selected.id === item.id
+          const isActive = i >= currIndex
           const isHidden = i < currIndex
 
           let transform = ''
-          if (currIndex !== 0) {
-            transform += `translateX(calc(-${currIndex}00% - ${
+          if (currIndex !== 0 && isActive) {
+            transform = `translateX(calc(-${currIndex}00% - ${
               currIndex * 10
-            }px)) `
-
-            if (isHidden) {
-              transform += `scale3d(.3,.3,.3) `
-            }
+            }px))`
           }
 
-          //   if (isActive) {
-          //     transform += 'scaleX(1)'
-          //   }
+          if (isHidden) {
+            transform =
+              i === 0
+                ? 'scale3d(.3,.3,.3)'
+                : `translateX(calc(-${i}00% - ${i * 10}px)) scale3d(.3,.3,.3) `
+          }
 
           const style = {
             transform,
