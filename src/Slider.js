@@ -2,27 +2,25 @@ import { useState } from 'react'
 import './Slider.scss'
 import classNames from 'classnames'
 
-const ITEMS = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]
-
-const Slider = () => {
-  const [selected, setSelected] = useState(ITEMS[0])
-  const currIndex = ITEMS.findIndex((i) => i.id === selected.id)
+const Slider = ({ items }) => {
+  const [selected, setSelected] = useState(items[0])
+  const currIndex = items.findIndex((i) => i.id === selected.id)
 
   const handleBack = () => {
     if (currIndex > 0) {
-      setSelected(ITEMS[currIndex - 1])
+      setSelected(items[currIndex - 1])
     }
   }
 
   const handleNext = () => {
-    if (currIndex < ITEMS.length - 1) {
-      setSelected(ITEMS[currIndex + 1])
+    if (currIndex < items.length - 1) {
+      setSelected(items[currIndex + 1])
     }
   }
   return (
     <div className="slider">
       <div className="slider-container">
-        {ITEMS.map((item, i) => {
+        {items.map((item, i) => {
           const isActive = i >= currIndex
           const isHidden = i < currIndex
 
@@ -40,17 +38,13 @@ const Slider = () => {
                 : `translateX(calc(-${i}00% - ${i * 10}px)) scale3d(.3,.3,.3) `
           }
 
-          const style = {
-            transform,
-          }
-
           return (
             <div
               className={classNames('slider-item', {
                 'is-active': isActive,
                 'is-hidden': isHidden,
               })}
-              style={style}
+              style={{ transform }}
               key={item.id}
             >{`Item ${item.id}`}</div>
           )
