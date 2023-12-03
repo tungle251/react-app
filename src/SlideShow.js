@@ -24,18 +24,17 @@ const SliderShow = ({ items }) => {
           const isActive = i >= currIndex
           const isHidden = i < currIndex
           let transform = ''
-          const marginRight = 15
+          // if you change the gap in parent, you need to change this variable too
+          const gap = 10
           if (isHidden) {
             transform =
               i === 0
                 ? 'scale3d(.3,.3,.3)'
-                : `translateX(calc(-${i}00% - ${
-                    i * marginRight
-                  }px)) scale3d(.3,.3,.3)`
+                : `translateX(calc(-${i}00% - ${i * gap}px)) scale3d(.3,.3,.3)`
             // isActive and not the first item in the list
           } else if (currIndex !== 0) {
             transform = `translateX(calc(-${currIndex}00% - ${
-              currIndex * marginRight
+              currIndex * gap
             }px))`
           }
 
@@ -45,7 +44,7 @@ const SliderShow = ({ items }) => {
                 'is-active': isActive,
                 'is-hidden': isHidden,
               })}
-              style={{ transform, marginRight: `${marginRight}px` }}
+              style={{ transform }}
               key={id}
             >
               {children}
