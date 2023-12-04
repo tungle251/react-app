@@ -2,6 +2,8 @@ import { useState } from 'react'
 import './SliderShow.scss'
 import classNames from 'classnames'
 
+const GAP = 10 // px
+
 const SliderShow = ({ items }) => {
   const [selectedItem, setSelectedItem] = useState(items[0])
   const currIndex = items.findIndex((i) => i.id === selectedItem.id)
@@ -19,22 +21,20 @@ const SliderShow = ({ items }) => {
   }
   return (
     <div className="slider">
-      <div className="slider-container">
+      <div className="slider-container" style={{ gap: GAP }}>
         {items.map(({ id, children }, i) => {
           const isActive = i >= currIndex
           const isHidden = i < currIndex
           let transform = ''
-          // if you change the gap in parent, you need to change this variable too
-          const gap = 10
           if (isHidden) {
             transform =
               i === 0
                 ? 'scale3d(.3,.3,.3)'
-                : `translateX(calc(-${i}00% - ${i * gap}px)) scale3d(.3,.3,.3)`
+                : `translateX(calc(-${i}00% - ${i * GAP}px)) scale3d(.3,.3,.3)`
             // isActive and not the first item in the list
           } else if (currIndex !== 0) {
             transform = `translateX(calc(-${currIndex}00% - ${
-              currIndex * gap
+              currIndex * GAP
             }px))`
           }
 
