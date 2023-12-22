@@ -57,8 +57,8 @@ const SliderShow = ({ items }) => {
     }
   }
   return (
-    <div className="slider" ref={ourRef} style={{ gap: GAP }}>
-      <div className="slider-container">
+    <div className="slider" ref={ourRef}>
+      <div className="slider-container" style={{ gap: GAP }}>
         {items.map(({ id, children }, i) => {
           const isActive = i >= currIndex
           const isHidden = i < currIndex
